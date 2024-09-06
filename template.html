@@ -33,25 +33,24 @@ $include-before$
 $endfor$
 <table class="header">
   <tr>
-    <td colspan="2" rowspan="2" class="width-auto">
+    <td colspan="2" rowspan="3" class="width-auto">
       <h1 class="title">$title$</h1>
-      <span class="subtitle">$subtitle$</span>
+      <br>
+      <span class="subtitle">$subtitle$ </span>
     </td>
-    <th>Version</th>
-    <td class="width-min">$version$</td>
+    <th>Published</th>
+    <td class="width-min">$publish-date$</td>
   </tr>
   <tr>
     <th>Updated</th>
-    <td class="width-min"><time style="white-space: pre;">$date$</time></td>
+    <td class="width-min"><time style="white-space: pre;">$update-date$</time></td>
   </tr>
   <tr>
-    <th class="width-min">Author</th>
-    <td class="width-auto"><a href="$author-url$"><cite>$author$</cite></a></td>
-    <th class="width-min">License</th>
-    <td>MIT</td>
+    <th>Author</th>
+    <td class="width-min"><a href="$author-url$"><cite>$author$</cite></a></td>
   </tr>
 </table>
-<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<!-- <label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label> -->
 $if(abstract)$
 <div class="abstract">
 <div class="abstract-title">$abstract-title$</div>
