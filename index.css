@@ -105,7 +105,7 @@ h3:hover a.header-link,
 h4:hover a.header-link,
 h5:hover a.header-link,
 h6:hover a.header-link {
-    display: inline;
+  display: inline;
 }
 
 hr {
@@ -274,7 +274,7 @@ code {
   color: var(--text-color);
   border-radius: 5px;
 
-  font-size: 15px;
+  font-size: 0.9rem;
   font-weight: var(--font-weight-medium);
 }
 
@@ -282,25 +282,30 @@ pre code {
   background: var(--background-color-alt);
   color: var(--text-color);
 
-  padding: 10px;
+  padding: 1.2rem;
   border-radius: 5px;
   display: block;
   overflow-x: auto;
-  line-height: 1.8 rem;
+  line-height: 1.8rem;
 
   font-family: var(--font-family);
   font-optical-sizing: auto;
   font-weight: var(--font-weight-normal);
   font-style: normal;
   font-variant-numeric: tabular-nums lining-nums;
-  font-size: 15px;
+  font-size: 0.95rem;
 }
 
 blockquote {
   border-left: 4px solid var(--text-color-alt);
   color: var(--text-color-alt);
   padding: 1px 1px 1px 15px;
-  margin: 20px 0;
+  margin: 0;
+}
+
+blockquote p {
+  margin: 0;
+  font-size: 0.95rem;
 }
 
 figure {
