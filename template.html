@@ -33,30 +33,26 @@ $include-before$
 $endfor$
 <table class="header">
   <tr>
-    <td colspan="2" rowspan="3" class="width-auto">
+    <th colspan="3">
       <h1 class="title">$title$</h1>
-      <br>
       <span class="subtitle">$subtitle$ </span>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      author: <a href="$author-url$"><cite>$author$</cite></a>
     </td>
-    <th>Published</th>
-    <td class="width-min">$publish-date$</td>
-  </tr>
-  <tr>
-    <th>Updated</th>
-    <td class="width-min"><time style="white-space: pre;">$update-date$</time></td>
-  </tr>
-  <tr>
-    <th>Author</th>
-    <td class="width-min"><a href="$author-url$"><cite>$author$</cite></a></td>
+    <td>
+      published: $publish-date$
+    </td>
+    $if(update-date)$
+    <td>
+      updated: $update-date$
+    </td>
+    $endif$
   </tr>
 </table>
-<!-- <label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label> -->
-$if(abstract)$
-<div class="abstract">
-<div class="abstract-title">$abstract-title$</div>
-$abstract$
 </div>
-$endif$
 $if(toc)$
 <nav id="$idprefix$TOC" role="doc-toc">
 $if(toc-title)$

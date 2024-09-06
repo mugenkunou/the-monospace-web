@@ -204,9 +204,7 @@ th {
 .header h1 {
   margin: 0;
 }
-.header tr td:last-child {
-  text-align: right;
-}
+
 
 p {
   word-break: break-word;
