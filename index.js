@@ -14,16 +14,16 @@ function adjustMediaPadding() {
   const cell = gridCellDimensions();
 
   function setHeightFromRatio(media, ratio) {
-      const rect = media.getBoundingClientRect();
-      const realHeight = rect.width / ratio;
-      const diff = cell.height - (realHeight % cell.height);
-      media.style.setProperty("padding-bottom", `${diff}px`);
+    const rect = media.getBoundingClientRect();
+    const realHeight = rect.width / ratio;
+    const diff = cell.height - (realHeight % cell.height);
+    media.style.setProperty("padding-bottom", `${diff}px`);
   }
 
   function setFallbackHeight(media) {
-      const rect = media.getBoundingClientRect();
-      const height = Math.round((rect.width / 2) / cell.height) * cell.height;
-      media.style.setProperty("height", `${height}px`);
+    const rect = media.getBoundingClientRect();
+    const height = Math.round(rect.width / 2 / cell.height) * cell.height;
+    media.style.setProperty("height", `${height}px`);
   }
 
   function onMediaLoaded(media) {
@@ -45,34 +45,15 @@ function adjustMediaPadding() {
     }
   }
 
-  const medias = document.querySelectorAll("img, video");
+  const medias = document.querySelectorAll("img");
   for (media of medias) {
-    switch (media.tagName) {
-      case "IMG":
-        if (media.complete) {
-          onMediaLoaded(media);
-        } else {
-          media.addEventListener("load", () => onMediaLoaded(media));
-          media.addEventListener("error", function() {
-              setFallbackHeight(media);
-          });
-        }
-        break;
-      case "VIDEO":
-        switch (media.readyState) {
-          case HTMLMediaElement.HAVE_CURRENT_DATA:
-          case HTMLMediaElement.HAVE_FUTURE_DATA:
-          case HTMLMediaElement.HAVE_ENOUGH_DATA:
-            onMediaLoaded(media);
-            break;
-          default:
-            media.addEventListener("loadeddata", () => onMediaLoaded(media));
-            media.addEventListener("error", function() {
-              setFallbackHeight(media);
-            });
-            break;
-        }
-        break;
+    if (media.complete) {
+      onMediaLoaded(media);
+    } else {
+      media.addEventListener("load", () => onMediaLoaded(media));
+      media.addEventListener("error", function () {
+        setFallbackHeight(media);
+      });
     }
   }
 }
@@ -91,7 +72,9 @@ function checkOffsets() {
     "TH",
   ]);
   const cell = gridCellDimensions();
-  const elements = document.querySelectorAll("body :not(.debug-grid, .debug-toggle)");
+  const elements = document.querySelectorAll(
+    "body"
+  );
   for (const element of elements) {
     if (ignoredTagNames.has(element.tagName)) {
       continue;
@@ -103,9 +86,16 @@ function checkOffsets() {
     const top = rect.top + window.scrollY;
     const left = rect.left + window.scrollX;
     const offset = top % (cell.height / 2);
-    if(offset > 0) {
+    if (offset > 0) {
       element.classList.add("off-grid");
-      console.error("Incorrect vertical offset for", element, "with remainder", top % cell.height, "when expecting divisible by", cell.height / 2);
+      console.error(
+        "Incorrect vertical offset for",
+        element,
+        "with remainder",
+        top % cell.height,
+        "when expecting divisible by",
+        cell.height / 2
+      );
     } else {
       element.classList.remove("off-grid");
     }
@@ -113,37 +103,33 @@ function checkOffsets() {
 }
 
 // generate anchor links for headers
-document.addEventListener("DOMContentLoaded", function() {
-  const headers = document.querySelectorAll('h2, h3, h4, h5, h6');
-  headers.forEach(function(header) {
-      const anchor = document.createElement('a');
-      anchor.href = '#' + header.id;
-      anchor.className = 'header-link';
-      anchor.textContent = ' 🔗';
-      header.appendChild(anchor);
+document.addEventListener("DOMContentLoaded", function () {
+  const headers = document.querySelectorAll("h2, h3, h4, h5, h6");
+  headers.forEach(function (header) {
+    const anchor = document.createElement("a");
+    anchor.href = "#" + header.id;
+    anchor.className = "header-link";
+    anchor.textContent = " 🔗";
+    header.appendChild(anchor);
   });
 });
 
 // copy to clipboard, anchor links
-document.addEventListener("DOMContentLoaded", function() {
-  const links = document.querySelectorAll('a.header-link');
-  links.forEach(function(link) {
-      link.addEventListener('click', function(event) {
-          event.preventDefault();
-          const href = link.getAttribute('href');
-          const fullUrl = window.location.origin + window.location.pathname + href;
-          navigator.clipboard.writeText(fullUrl).then(() => {
-              window.location.href = href
-          }).catch(err => {
-              console.error('Failed to copy: ', err);
-          });
-      });
+document.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll("a.header-link");
+  links.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      const href = link.getAttribute("href");
+      const fullUrl = window.location.origin + window.location.pathname + href;
+      navigator.clipboard
+        .writeText(fullUrl)
+        .then(() => {
+          window.location.href = href;
+        })
+        .catch((err) => {
+          console.error("Failed to copy: ", err);
+        });
+    });
   });
 });
-
-const debugToggle = document.querySelector(".debug-toggle");
-function onDebugToggle() {
-  document.body.classList.toggle("debug", debugToggle.checked);
-}
-debugToggle.addEventListener("change", onDebugToggle);
-onDebugToggle();
