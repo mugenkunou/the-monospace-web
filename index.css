@@ -6,8 +6,8 @@
   --border-thickness: 2px;
   --text-color: #000;
   --text-color-alt: #666;
-  --background-color: #fff;
-  --background-color-alt: #eee;
+  --background-color: #eee;
+  --background-color-alt: #fff;
 
   --font-weight-normal: 500;
   --font-weight-medium: 600;
@@ -23,10 +23,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text-color: #fafafa;
-    --text-color-alt: #aaa;
-    --background-color: #181818;
-    --background-color-alt: #000000;
+    --text-color: #e7e7e7;
+    --text-color-alt: #808080;
+    --background-color: #252525;
+    --background-color-alt: #000;
   }
 }
 
@@ -273,6 +273,7 @@ code {
   background: var(--background-color-alt);
   color: var(--text-color);
   border-radius: 5px;
+  padding: 0.2rem;
 
   font-size: 0.9rem;
   font-weight: var(--font-weight-medium);
@@ -281,7 +282,6 @@ code {
 pre code {
   background: var(--background-color-alt);
   color: var(--text-color);
-
   padding: 1.2rem;
   border-radius: 5px;
   display: block;
