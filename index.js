@@ -112,6 +112,35 @@ function checkOffsets() {
   }
 }
 
+// generate anchor links for headers
+document.addEventListener("DOMContentLoaded", function() {
+  const headers = document.querySelectorAll('h2, h3, h4, h5, h6');
+  headers.forEach(function(header) {
+      const anchor = document.createElement('a');
+      anchor.href = '#' + header.id;
+      anchor.className = 'header-link';
+      anchor.textContent = ' 🔗';
+      header.appendChild(anchor);
+  });
+});
+
+// copy to clipboard, anchor links
+document.addEventListener("DOMContentLoaded", function() {
+  const links = document.querySelectorAll('a.header-link');
+  links.forEach(function(link) {
+      link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const href = link.getAttribute('href');
+          const fullUrl = window.location.origin + window.location.pathname + href;
+          navigator.clipboard.writeText(fullUrl).then(() => {
+              window.location.href = href
+          }).catch(err => {
+              console.error('Failed to copy: ', err);
+          });
+      });
+  });
+});
+
 const debugToggle = document.querySelector(".debug-toggle");
 function onDebugToggle() {
   document.body.classList.toggle("debug", debugToggle.checked);

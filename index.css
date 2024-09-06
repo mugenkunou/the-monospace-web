@@ -100,6 +100,14 @@ h2 {
   text-transform: uppercase;
 }
 
+h2:hover a.header-link,
+h3:hover a.header-link,
+h4:hover a.header-link,
+h5:hover a.header-link,
+h6:hover a.header-link {
+    display: inline;
+}
+
 hr {
   position: relative;
   display: block;
@@ -126,6 +134,15 @@ a {
 a:link,
 a:visited {
   color: var(--text-color);
+}
+
+a.header-link {
+  display: none;
+  position: right;
+  left: 0;
+  transform: translateX(-100%);
+  padding-right: 4px;
+  text-decoration: none;
 }
 
 p {
