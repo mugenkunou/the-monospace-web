@@ -151,16 +151,6 @@ If we want one cell to fill the remainder, we set `flex-grow: 1;` for that parti
 
 <div class="grid"><input readonly value="1" /><input readonly value="2" /><input readonly value="3!" style="flex-grow: 1;" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" /></div>
 
-## ASCII Drawings
-
-We can draw in `<pre>` tags using [box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_characters):
-
-```
-╭─────────────────╮
-│ MONOSPACE ROCKS │
-╰─────────────────╯
-```
-
 To have it stand out a bit more, we can wrap it in a `<figure>` tag, and why not also add a `<figcaption>`.
 
 <figure>
@@ -224,3 +214,15 @@ If you like it or even decide to use it, please [let me know](https://x.com/owic
 The full source code is here: [github.com/owickstrom/the-monospace-web](https://github.com/owickstrom/the-monospace-web)
 
 Finally, a massive shout-out to [U.S. Graphics Company](https://x.com/usgraphics) for all the inspiration.
+
+## Permanently mount a partition
+
+To permanently mount a partition i.e. to mount the partition on every reboots, edit the `/etc/fstab` file.
+
+Get the UUID of the partition.
+
+```bash
+lsblk -f
+# alternatively...
+sudo fdisk -l
+```

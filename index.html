@@ -39,9 +39,9 @@
 <li><a href="#tables">Tables</a></li>
 <li><a href="#forms">Forms</a></li>
 <li><a href="#grids">Grids</a></li>
-<li><a href="#ascii-drawings">ASCII Drawings</a></li>
 <li><a href="#media">Media</a></li>
 <li><a href="#discussion">Discussion</a></li>
+<li><a href="#permanently-mount-a-partition">Permanently mount a partition</a></li>
 </ul>
 </nav>
 <h2 id="introduction">Introduction</h2>
@@ -201,11 +201,6 @@ Save
 <div class="grid">
 <input readonly value="1" /><input readonly value="2" /><input readonly value="3!" style="flex-grow: 1;" /><input readonly value="4" /><input readonly value="5" /><input readonly value="6" />
 </div>
-<h2 id="ascii-drawings">ASCII Drawings</h2>
-<p>We can draw in <code>&lt;pre&gt;</code> tags using <a href="https://en.wikipedia.org/wiki/Box-drawing_characters">box-drawing characters</a>:</p>
-<pre><code>╭─────────────────╮
-│ MONOSPACE ROCKS │
-╰─────────────────╯</code></pre>
 <p>To have it stand out a bit more, we can wrap it in a <code>&lt;figure&gt;</code> tag, and why not also add a <code>&lt;figcaption&gt;</code>.</p>
 <figure>
 <pre>
@@ -263,6 +258,12 @@ Example: Message passing.
 <p>That’s it for now. I’ve very much enjoyed making this, pushing my CSS chops and having a lot of fun with the design. If you like it or even decide to use it, please <a href="https://x.com/owickstrom">let me know</a>.</p>
 <p>The full source code is here: <a href="https://github.com/owickstrom/the-monospace-web">github.com/owickstrom/the-monospace-web</a></p>
 <p>Finally, a massive shout-out to <a href="https://x.com/usgraphics">U.S. Graphics Company</a> for all the inspiration.</p>
+<h2 id="permanently-mount-a-partition">Permanently mount a partition</h2>
+<p>To permanently mount a partition i.e. to mount the partition on every reboots, edit the <code>/etc/fstab</code> file.</p>
+<p>Get the UUID of the partition.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">lsblk</span> -f</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co"># alternatively...</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">sudo</span> fdisk -l</span></code></pre></div>
   <div class="debug-grid"></div>
   <script src="index.js"></script>
 </body>
