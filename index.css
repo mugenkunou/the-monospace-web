@@ -2,7 +2,7 @@
 
 :root {
   --font-family: "JetBrains Mono", monospace;
-  --line-height: 1.2rem;
+  --line-height: 1.5rem;
   --border-thickness: 2px;
   --text-color: #000;
   --text-color-alt: #666;
@@ -270,6 +270,11 @@ code {
 }
 
 code {
+  background: var(--background-color-alt);
+  color: var(--text-color);
+  border-radius: 5px;
+
+  font-size: 15px;
   font-weight: var(--font-weight-medium);
 }
 
@@ -281,7 +286,7 @@ pre code {
   border-radius: 5px;
   display: block;
   overflow-x: auto;
-  line-height: 1.8;
+  line-height: 1.8 rem;
 
   font-family: var(--font-family);
   font-optical-sizing: auto;
@@ -289,6 +294,13 @@ pre code {
   font-style: normal;
   font-variant-numeric: tabular-nums lining-nums;
   font-size: 15px;
+}
+
+blockquote {
+  border-left: 4px solid var(--text-color-alt);
+  color: var(--text-color-alt);
+  padding: 1px 1px 1px 15px;
+  margin: 20px 0;
 }
 
 figure {
